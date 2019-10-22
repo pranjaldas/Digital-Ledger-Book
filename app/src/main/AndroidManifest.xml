@@ -9,14 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewRegistrationForm"></activity>
-        <activity android:name=".Forgot_Password" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".test.SmartTextCheck">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".NewRegistrationForm" />
+        <activity android:name=".Forgot_Password" />
+        <activity android:name=".MainActivity">
         </activity>
     </application>
 
