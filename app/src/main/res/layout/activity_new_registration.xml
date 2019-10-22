@@ -1,89 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".registration.NewRegistration"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewRegistration"
     android:orientation="vertical">
-
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:background="#A8D9F0"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="-150dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        app:cardBackgroundColor="#E2F7F4"
-        app:cardCornerRadius="30dp"
-        app:cardUseCompatPadding="true"
-        android:elevation="8dp">
-
-        <LinearLayout
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="400dp"
+            android:background="#A8D9F0"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:textSize="20sp"
-                android:text="NEW REGISTRATION"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textStyle="bold"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="-150dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:cardBackgroundColor="#E2F7F4"
+            app:cardCornerRadius="30dp"
+            app:cardUseCompatPadding="true"
+            android:elevation="8dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingTop="20dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Username/Phone No."
-                    android:textStyle="bold"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Password"
-                    android:textStyle="bold"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textWebPassword"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Confirm Password"
-                    android:textStyle="bold"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textWebPassword"/>
+                android:orientation="vertical">
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="REGISTER"
-                    android:layout_gravity="center"
-                    android:elevation="8dp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="15dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="20sp"
+                    android:text="NEW REGISTRATION"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <com.teleclinic.kabdo.smartform.SmartEditText
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:id="@+id/phoneSmartEditText"
+                        app:scetLabel="Phone Number"
+                        app:scetMandatoryErrorMsg="Mandatory field"
+                        app:spnErrorMessage="Enter valid Phone number"
+                        app:setRegexErrorMsg="Wrong Phone Number format"
+                        app:setRegexString="@string/phoneno_regex"
+                        />
+
+                    <com.teleclinic.kabdo.smartform.SmartEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/passwordSmartEditText"
+                        app:setLabel="Password"
+                        app:setMandatoryErrorMsg="Mandatory field"
+                        app:setPasswordField="true"
+                        app:setRegexErrorMsg="Weak password"
+                        app:setRegexType="MEDIUM_PASSWORD_VALIDATION"/>
+
+                    <com.teleclinic.kabdo.smartform.SmartEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textWebPassword"
+                        android:id="@+id/confirmPasswordSmartEditText"
+                        app:setLabel="Confirm Password"
+                        app:setMandatoryErrorMsg="Mandatory field"
+                        app:setPasswordField="true"
+                        app:setRegexErrorMsg="Weak password"
+                        app:setRegexType="MEDIUM_PASSWORD_VALIDATION"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="REGISTER"
+                        android:layout_gravity="center"
+                        android:elevation="8dp"
+                        android:textStyle="bold"
+                        android:id="@+id/buttonRegister"
+                        android:layout_marginTop="15dp"
+                        android:onClick="check"/>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

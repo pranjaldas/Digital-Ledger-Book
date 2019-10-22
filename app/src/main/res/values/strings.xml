@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Baki_Bohi</string>
+    <string name="phoneno_regex">^(?:(?:\\+|0{0,2})91(\\s*[\\-]\\s*)?|[0]?)?[789]\\d{9}$</string>
 </resources>
+

@@ -30,4 +30,5 @@ dependencies {
     //SmartEditText
     implementation 'com.github.TeleClinic:SmartForm:1.0.10'
 
+    implementation 'androidx.cardview:cardview:1.0.0'
 }
