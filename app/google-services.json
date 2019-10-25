@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "440824709767",
+    "firebase_url": "https://digital-ledger-system.firebaseio.com",
+    "project_id": "digital-ledger-system",
+    "storage_bucket": "digital-ledger-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:440824709767:android:2ea14a79cbc15a67f56e22",
+        "android_client_info": {
+          "package_name": "com.android.example.baki_bohi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "440824709767-cq22omj0fpsl5ur5nemi0fe3a7rc4grt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.example.baki_bohi",
+            "certificate_hash": "88103a4ea5acf228cb70a5f72736cfa919a47bbd"
+          }
+        },
+        {
+          "client_id": "440824709767-df9rditk5drk5bc6johs3ik82l171onv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO7tjVGBiwvIxuYLjj5qCSeksqe2gCy90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "440824709767-df9rditk5drk5bc6johs3ik82l171onv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

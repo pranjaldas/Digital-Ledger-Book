@@ -5,32 +5,31 @@
     tools:context=".registration.NewRegistration"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/newreg"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:background="#A8D9F0"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginTop="-150dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             app:cardBackgroundColor="#E2F7F4"
             app:cardCornerRadius="30dp"
             app:cardUseCompatPadding="true"
+
             android:elevation="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -45,42 +44,68 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:paddingTop="20dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp">
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
 
-                    <com.teleclinic.kabdo.smartform.SmartEditText
-
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress"
-                        android:id="@+id/phoneSmartEditText"
-                        app:scetLabel="Phone Number"
-                        app:scetMandatoryErrorMsg="Mandatory field"
-                        app:spnErrorMessage="Enter valid Phone number"
-                        app:setRegexErrorMsg="Wrong Phone Number format"
-                        app:setRegexString="@string/phoneno_regex"
-                        />
+                        android:focusable="true"
+                        android:focusableInTouchMode="true">
 
-                    <com.teleclinic.kabdo.smartform.SmartEditText
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/emailSmartEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/passwordSmartEditText"
-                        app:setLabel="Password"
-                        app:setMandatoryErrorMsg="Mandatory field"
-                        app:setPasswordField="true"
-                        app:setRegexErrorMsg="Weak password"
-                        app:setRegexType="MEDIUM_PASSWORD_VALIDATION"/>
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        app:passwordToggleEnabled="true">
 
-                    <com.teleclinic.kabdo.smartform.SmartEditText
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/passwordSmartEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Password"
+                            android:inputType="textPassword"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textWebPassword"
-                        android:id="@+id/confirmPasswordSmartEditText"
-                        app:setLabel="Confirm Password"
-                        app:setMandatoryErrorMsg="Mandatory field"
-                        app:setPasswordField="true"
-                        app:setRegexErrorMsg="Weak password"
-                        app:setRegexType="MEDIUM_PASSWORD_VALIDATION"/>
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/confirmPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Confirm Password"
+                            android:inputType="textPassword"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="3dp"
+                        android:tooltipText="Please Wait"
+                        android:visibility="gone" />
 
                     <Button
                         android:layout_width="wrap_content"
@@ -88,10 +113,12 @@
                         android:text="REGISTER"
                         android:layout_gravity="center"
                         android:elevation="8dp"
+                        android:layout_marginBottom="15dp"
                         android:textStyle="bold"
+                        android:background="@drawable/button"
                         android:id="@+id/buttonRegister"
                         android:layout_marginTop="15dp"
-                        android:onClick="check"/>
+                        android:textColor="#ffffff" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
