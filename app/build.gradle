@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -33,4 +34,13 @@ dependencies {
     implementation 'com.github.TeleClinic:SmartForm:1.0.10'
 
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.firebase:firebase-analytics:17.2.0'
+    implementation 'com.google.firebase:firebase-auth:19.1.0'
+    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    implementation 'com.google.firebase:firebase-database:16.0.4'
+    implementation 'com.google.firebase:firebase-storage:16.0.4'
+    implementation 'com.android.support:design:28.0.0'
+
 }
+apply plugin: 'com.google.gms.google-services'
+
