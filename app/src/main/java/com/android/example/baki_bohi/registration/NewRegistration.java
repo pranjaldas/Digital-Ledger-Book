@@ -27,6 +27,9 @@ public class NewRegistration extends AppCompatActivity {
     private EditText confirmpass;
     private Button regbtn;
     private ProgressBar progress;
+    //to send email and uid
+    public static final String EMAIL = "com.android.example.baki_bohi.registration.EMAIL";
+    public static final String USER_ID = "com.android.example.baki_bohi.registration.USER_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class NewRegistration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_registration);
         getSupportActionBar().hide();
+
 
 
         //initialization
@@ -83,7 +87,10 @@ public class NewRegistration extends AppCompatActivity {
 
                                     } else {
                                         Toast.makeText(NewRegistration.this, "You Are registered", Toast.LENGTH_SHORT).show();
-                                        Intent intn = new Intent(NewRegistration.this, LogIn.class);
+                                        String uid = FirebaseAuth.getInstance().getUid();
+                                        Intent intn = new Intent(NewRegistration.this, CreateAccount.class);
+                                        intn.putExtra(EMAIL, email);
+                                        intn.putExtra(USER_ID, uid);
                                         startActivity(intn);
                                     }
 

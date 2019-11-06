@@ -1,8 +1,10 @@
-package com.android.example.baki_bohi;
+package com.android.example.baki_bohi.test;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.android.example.baki_bohi.R;
 
 public class EditAccount extends AppCompatActivity {
 
