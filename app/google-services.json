@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "440824709767-kaclqra9ib0hkfhjihlgesou6n3m84ql.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.example.baki_bohi",
+            "certificate_hash": "74d7069fe84f2864735bf91fd93486173a98f5c0"
+          }
+        },
+        {
           "client_id": "440824709767-cq22omj0fpsl5ur5nemi0fe3a7rc4grt.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
