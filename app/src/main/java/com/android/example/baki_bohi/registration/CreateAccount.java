@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.example.baki_bohi.MainHome;
 import com.android.example.baki_bohi.R;
 import com.android.example.baki_bohi.models.Shopkeeper;
+import com.android.example.baki_bohi.util.Persistance;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -39,11 +40,11 @@ public class CreateAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         getSupportActionBar().hide();
-        //to catch the variables email and uid;
+        /*to catch the variables email and uid;
         Intent intent = getIntent();
         final String email = intent.getStringExtra(NewRegistration.EMAIL);
         final String uid = intent.getStringExtra(NewRegistration.USER_ID);
-
+        */
 
         //Initialization
         mDatabase = FirebaseDatabase.getInstance();
@@ -51,7 +52,7 @@ public class CreateAccount extends AppCompatActivity {
 
         spinner = findViewById(R.id.spinnerCountries);
         spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, CountryData.countryNames));
-        name = findViewById(R.id.sname);
+        name = findViewById(R.id.profile_name);
         phnno = findViewById(R.id.sphn);
         address = findViewById(R.id.sadress);
         shopname = findViewById(R.id.sShopname);
@@ -64,7 +65,8 @@ public class CreateAccount extends AppCompatActivity {
                 String sphn = phnno.getText().toString().trim();
                 String saddress = address.getText().toString().trim();
                 String shpname = shopname.getText().toString().trim();
-
+                String email = Persistance.email;
+                String uid = Persistance.uId;
                 Shopkeeper shpkpr = new Shopkeeper(sname, sphn, email, saddress, shpname, uid);
 
                 mRef.child(uid).setValue(shpkpr).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -74,6 +76,7 @@ public class CreateAccount extends AppCompatActivity {
                             Toast.makeText(CreateAccount.this, "ShopKeeper Account Created", Toast.LENGTH_SHORT).show();
                             Intent intn = new Intent(CreateAccount.this, MainHome.class);
                             startActivity(intn);
+                            finish();
                         }
 
                     }

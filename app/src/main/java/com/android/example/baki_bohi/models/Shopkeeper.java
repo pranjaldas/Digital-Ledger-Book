@@ -60,4 +60,24 @@ public class Shopkeeper {
     public void setShopname(String shopname) {
         this.shopname = shopname;
     }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    @Override
+    public String toString() {
+        return "Shopkeeper{" +
+                "name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", shopname='" + shopname + '\'' +
+                ", uid='" + uid + '\'' +
+                '}';
+    }
 }

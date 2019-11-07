@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.example.baki_bohi.R;
+import com.android.example.baki_bohi.util.Persistance;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -27,10 +28,11 @@ public class NewRegistration extends AppCompatActivity {
     private EditText confirmpass;
     private Button regbtn;
     private ProgressBar progress;
-    //to send email and uid
+
+    /*to send email and uid
     public static final String EMAIL = "com.android.example.baki_bohi.registration.EMAIL";
     public static final String USER_ID = "com.android.example.baki_bohi.registration.USER_ID";
-
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -86,12 +88,13 @@ public class NewRegistration extends AppCompatActivity {
                                         Toast.makeText(NewRegistration.this, "Sign Up Unsuccessful", Toast.LENGTH_SHORT).show();
 
                                     } else {
+                                        Persistance.uId = mfirebaseAuth.getUid();
+                                        Persistance.email = email;
                                         Toast.makeText(NewRegistration.this, "You Are registered", Toast.LENGTH_SHORT).show();
                                         String uid = FirebaseAuth.getInstance().getUid();
                                         Intent intn = new Intent(NewRegistration.this, CreateAccount.class);
-                                        intn.putExtra(EMAIL, email);
-                                        intn.putExtra(USER_ID, uid);
                                         startActivity(intn);
+                                        finish();
                                     }
 
                                 }

@@ -1,6 +1,7 @@
 package com.android.example.baki_bohi.registration;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.example.baki_bohi.MainHome;
 import com.android.example.baki_bohi.R;
+import com.android.example.baki_bohi.util.Persistance;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -48,8 +50,8 @@ public class LogIn extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String emlgn = emailLogin.getText().toString().trim();
-                String pw = passwordLogin.getText().toString().trim();
+                final String emlgn = emailLogin.getText().toString().trim();
+                final String pw = passwordLogin.getText().toString().trim();
                 if (TextUtils.isEmpty(emlgn)) {
                     Toast.makeText(LogIn.this, "Enter email", Toast.LENGTH_SHORT).show();
                     return;
@@ -69,9 +71,11 @@ public class LogIn extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
+                            Persistance.uId = mfirebaseAuth.getUid();
+                            saveToSharedPreference(emlgn, pw);
                             Intent intn = new Intent(LogIn.this, MainHome.class);
-                            intn.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intn);
+                            finish();
 
                         } else {
                             Toast.makeText(LogIn.this, "Log in failed password and email mismatch", Toast.LENGTH_SHORT).show();
@@ -89,8 +93,18 @@ public class LogIn extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intn = new Intent(LogIn.this, NewRegistration.class);
                 startActivity(intn);
+
             }
         });
+
+    }
+
+    private void saveToSharedPreference(String emlgn, String pw) {
+        SharedPreferences myPrefs = getSharedPreferences("bakiBohiPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor edit = myPrefs.edit();
+        edit.putString("email", emlgn);
+        edit.putString("pw", pw);
+        edit.apply();
 
     }
 

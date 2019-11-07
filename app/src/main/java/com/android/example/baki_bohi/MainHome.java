@@ -25,7 +25,7 @@ public class MainHome extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_home);
-        getSupportActionBar().hide();
+
 
         profile = findViewById(R.id.profileview);
         addtrans = findViewById(R.id.transactionadd);
@@ -34,11 +34,13 @@ public class MainHome extends AppCompatActivity {
         addcustomer = findViewById(R.id.customeradd);
         viewcustomer = findViewById(R.id.customersview);
 
+
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intn = new Intent(MainHome.this, ShopKeeperProfile.class);
                 startActivity(intn);
+
             }
         });
         addtrans.setOnClickListener(new View.OnClickListener() {

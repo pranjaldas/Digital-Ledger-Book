@@ -17,7 +17,7 @@
 
 
         <EditText
-            android:id="@+id/sname"
+            android:id="@+id/profile_name"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#F8F6F6"
