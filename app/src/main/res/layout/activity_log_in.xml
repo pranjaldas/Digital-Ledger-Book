@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".registration.LogIn"
-    android:background="@drawable/newreg"
+    android:background="@drawable/background"
     android:orientation="vertical">
+
 
     <LinearLayout
         android:layout_height="match_parent"
@@ -15,6 +16,7 @@
         android:orientation="vertical"
         android:paddingLeft="15dp"
         android:paddingRight="15dp">
+
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

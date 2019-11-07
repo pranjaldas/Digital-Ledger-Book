@@ -5,7 +5,7 @@
     tools:context=".registration.NewRegistration"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/newreg"
+    android:background="@drawable/background"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +22,6 @@
             app:cardBackgroundColor="#E2F7F4"
             app:cardCornerRadius="30dp"
             app:cardUseCompatPadding="true"
-
             android:elevation="8dp">
 
             <LinearLayout
