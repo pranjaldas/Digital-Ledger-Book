@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bbg"
+
     android:orientation="vertical"
     android:padding="20dp">
 
@@ -28,7 +28,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/avatar" />
+                android:src="@drawable/icon" />
 
             <Button
                 android:id="@+id/logout"

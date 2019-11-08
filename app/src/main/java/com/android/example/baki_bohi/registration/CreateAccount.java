@@ -18,6 +18,7 @@ import com.android.example.baki_bohi.MainHome;
 import com.android.example.baki_bohi.R;
 import com.android.example.baki_bohi.models.Shopkeeper;
 import com.android.example.baki_bohi.util.Persistance;
+import com.android.example.baki_bohi.util.UiUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -61,6 +62,7 @@ public class CreateAccount extends AppCompatActivity {
         createac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                UiUtil.showSimpleProgressDialog(CreateAccount.this, "Please wait...", "Crating your Account", false);
                 String sname = name.getText().toString().trim();
                 String sphn = phnno.getText().toString().trim();
                 String saddress = address.getText().toString().trim();
@@ -72,6 +74,7 @@ public class CreateAccount extends AppCompatActivity {
                 mRef.child(uid).setValue(shpkpr).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+                        UiUtil.removeSimpleProgressDialog();
                         if (task.isSuccessful()) {
                             Toast.makeText(CreateAccount.this, "ShopKeeper Account Created", Toast.LENGTH_SHORT).show();
                             Intent intn = new Intent(CreateAccount.this, MainHome.class);

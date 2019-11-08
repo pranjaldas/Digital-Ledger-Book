@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -35,6 +37,8 @@ public class AddTransaction extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
 
@@ -78,11 +82,11 @@ public class AddTransaction extends AppCompatActivity {
     }
 
     private void uiUpdate() {
-        amount = findViewById(R.id.textView7);
-        debit = findViewById(R.id.textView9);
-        credit = findViewById(R.id.textView11);
+        amount = findViewById(R.id.transaction_total);
+        debit = findViewById(R.id.transaction_debit);
+        credit = findViewById(R.id.transaction_credit);
         progress = findViewById(R.id.progressBar);
-        add = findViewById(R.id.button1);
+        add = findViewById(R.id.transaction_add);
         //Validation
         amount.addTextChangedListener(new TextWatcher() {
             @Override

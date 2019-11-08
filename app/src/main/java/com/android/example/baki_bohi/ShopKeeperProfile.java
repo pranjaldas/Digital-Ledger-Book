@@ -39,6 +39,7 @@ public class ShopKeeperProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        UiUtil.showSimpleProgressDialog(ShopKeeperProfile.this, "Please wait...", "Getting your data from server", false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_keeper_profile);
 

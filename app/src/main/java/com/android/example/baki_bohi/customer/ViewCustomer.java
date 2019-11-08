@@ -5,6 +5,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,8 +34,12 @@ public class ViewCustomer extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_customer);
-        UiUtil.showSimpleProgressDialog(ViewCustomer.this, "Please wait...", "Retrieving your data", false);
+        UiUtil.showSimpleProgressDialog(ViewCustomer.this, "Please wait...", "Retrieving your data", true);
+
         final ArrayList<String> customerlist = new ArrayList<String>();
+        final ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(ViewCustomer.this, android.R.layout.simple_list_item_1, customerlist);
+        final ListView listView = findViewById(R.id.customer_list);
+
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference("Customers");
         Query query = mRef.orderByChild("sid").equalTo(Persistance.uId);
@@ -44,21 +49,18 @@ public class ViewCustomer extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//              for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Customer ctmr = dataSnapshot.getValue(Customer.class);
                     customerlist.add(ctmr.getName());
-                }
-
-                ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(ViewCustomer.this, android.R.layout.simple_list_item_1, customerlist);
-                ListView listView = findViewById(R.id.customer_list);
-
                 listView.setAdapter(itemsAdapter);
                 UiUtil.removeSimpleProgressDialog();
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+                Customer ctmr = dataSnapshot.getValue(Customer.class);
+                customerlist.add(ctmr.getName());
+                itemsAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -73,6 +75,7 @@ public class ViewCustomer extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), "No data", Toast.LENGTH_SHORT).show();
 
             }
 
