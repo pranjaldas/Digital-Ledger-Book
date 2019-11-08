@@ -5,19 +5,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.example.baki_bohi.customer.AddCustomer;
+import com.android.example.baki_bohi.customer.ViewCustomer;
 import com.android.example.baki_bohi.transaction.AddTransaction;
 import com.android.example.baki_bohi.transaction.ViewTransaction;
+import com.android.example.baki_bohi.util.UiUtil;
 
 public class MainHome extends AppCompatActivity {
-    Button profile;
-    Button addtrans;
-    Button viewtrans;
-    Button addcustomer;
-    Button viewcustomer;
+    ImageView profile;
+    ImageView addtrans;
+    ImageView viewtrans;
+    ImageView addcustomer;
+    ImageView viewcustomer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,8 @@ public class MainHome extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                UiUtil.showSimpleProgressDialog(MainHome.this, "Please wait...", "Getting your data from server", false);
+
                 Intent intn = new Intent(MainHome.this, ShopKeeperProfile.class);
                 startActivity(intn);
 
@@ -54,6 +59,20 @@ public class MainHome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intn = new Intent(MainHome.this, ViewTransaction.class);
+                startActivity(intn);
+            }
+        });
+        addcustomer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intn = new Intent(MainHome.this, AddCustomer.class);
+                startActivity(intn);
+            }
+        });
+        viewcustomer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intn = new Intent(MainHome.this, ViewCustomer.class);
                 startActivity(intn);
             }
         });

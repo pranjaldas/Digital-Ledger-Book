@@ -3,13 +3,11 @@ package com.android.example.baki_bohi;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,8 +43,6 @@ public class ShopKeeperProfile extends AppCompatActivity {
         setContentView(R.layout.activity_shop_keeper_profile);
 
 
-        UiUtil.showSimpleProgressDialog(this, "Please wait...", "Getting your data from server", false);
-
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference("Shopkeeper");
 
@@ -62,9 +58,8 @@ public class ShopKeeperProfile extends AppCompatActivity {
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
                 Shopkeeper sk = dataSnapshot.getValue(Shopkeeper.class);
-                Toast.makeText(getApplicationContext(), sk.getName(), Toast.LENGTH_LONG).show();
-                Log.i("TAG", sk.toString());
 
                 name.setText(sk.getName());
                 email.setText(sk.getEmail());
@@ -72,8 +67,9 @@ public class ShopKeeperProfile extends AppCompatActivity {
                 address.setText(sk.getAddress());
                 shopname.setText(sk.getShopname());
                 Uid.setText(sk.getUid());
-
                 UiUtil.removeSimpleProgressDialog();
+
+
             }
 
 

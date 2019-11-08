@@ -11,10 +11,13 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <!-- Title for the application. [CHAR LIMIT=12] -->
-    <string name="app_name">Baki Bohi(বাকী বহী)</string>
+    <string name="app_name">বাকী বহী</string>
 
     <string name="category_transactions">Transactions</string>
 
     <string name="category_shopkeeper_profile">Profile</string>
+
+    <string name="category_add_customer">Add Customer</string>
+    <string name="category_view_customer">My Customers</string>
 </resources>
 

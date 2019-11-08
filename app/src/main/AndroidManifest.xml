@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.android.example.baki_bohi">
 
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".test_home"></activity>
+        <activity
+            android:name=".customer.ViewCustomer"
+            android:label="@string/category_view_customer"></activity>
+        <activity
+            android:name=".customer.AddCustomer"
+            android:label="@string/category_add_customer" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +41,7 @@
         <activity android:name=".registration.OtpVarify" />
         <activity android:name=".registration.NewRegistration" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".registration.LogIn"></activity>
+        <activity android:name=".registration.LogIn" />
     </application>
 
 </manifest>
