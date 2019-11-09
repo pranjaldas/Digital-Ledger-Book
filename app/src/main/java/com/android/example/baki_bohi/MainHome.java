@@ -13,7 +13,6 @@ import com.android.example.baki_bohi.customer.AddCustomer;
 import com.android.example.baki_bohi.customer.ViewCustomer;
 import com.android.example.baki_bohi.transaction.AddTransaction;
 import com.android.example.baki_bohi.transaction.ViewTransaction;
-import com.android.example.baki_bohi.util.UiUtil;
 
 public class MainHome extends AppCompatActivity {
     ImageView profile;
@@ -41,8 +40,6 @@ public class MainHome extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UiUtil.showSimpleProgressDialog(MainHome.this, "Please wait...", "Getting your data from server", false);
-
                 Intent intn = new Intent(MainHome.this, ShopKeeperProfile.class);
                 startActivity(intn);
 

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.example.baki_bohi.R;
 import com.android.example.baki_bohi.models.TranTest;
+import com.android.example.baki_bohi.util.UiUtil;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,6 +30,7 @@ public class ViewTransaction extends AppCompatActivity implements ChildEventList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_transaction);
+        UiUtil.showSimpleProgressDialog(ViewTransaction.this, "Please wait...", "Getting your data from server", false);
 
         //Init RecyclerView
         tranList = new ArrayList<>();
@@ -44,6 +46,7 @@ public class ViewTransaction extends AppCompatActivity implements ChildEventList
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference("Transactions");
         mRef.addChildEventListener(this);
+
     }
 
     @Override
@@ -51,6 +54,7 @@ public class ViewTransaction extends AppCompatActivity implements ChildEventList
         TranTest item = dataSnapshot.getValue(TranTest.class);
         tranList.add(item);
         adapter.notifyDataSetChanged();
+        UiUtil.removeSimpleProgressDialog();
     }
 
     @Override
@@ -63,6 +67,7 @@ public class ViewTransaction extends AppCompatActivity implements ChildEventList
         TranTest item = dataSnapshot.getValue(TranTest.class);
         tranList.remove(item);
         adapter.notifyDataSetChanged();
+        UiUtil.removeSimpleProgressDialog();
     }
 
     @Override
