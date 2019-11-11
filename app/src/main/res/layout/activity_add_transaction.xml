@@ -31,7 +31,8 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:text="Total Amount:"
+            android:text="Total Purchase(মুঠ ক্রয়) :"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <EditText
@@ -45,28 +46,30 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:text="Debit Amount:"
+            android:text="Paid in Cash(নগদ টকা):"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/transaction_debit"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Enter Debit in Rupees"
+            android:hint="Enter Amount Rupees"
             android:inputType="number" />
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:text="Credit Amount:"
+            android:text="Credit Amount(বাকী টকা):"
+            android:textSize="20sp"
             android:textStyle="bold" />
-
 
         <EditText
             android:id="@+id/transaction_credit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Credit in Rupees."
+            android:hint="Enter Amount in Rupees."
             android:inputType="phone" />
 
 

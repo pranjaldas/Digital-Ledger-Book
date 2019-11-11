@@ -7,34 +7,39 @@
     android:background="@drawable/bbg"
     tools:context=".MainHome">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        android:orientation="vertical">
 
+        android:layout_gravity="center"
+        android:orientation="vertical">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_margin="5dp"
+            android:layout_marginBottom="60dp"
             android:background="@drawable/icontext" />
 
 
         <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:layout_gravity="center"
             android:alignmentMode="alignMargins"
             android:columnCount="2"
             android:rowCount="2">
 
             <androidx.cardview.widget.CardView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
+                android:clickable="true"
                 app:cardElevation="6dp">
 
                 <LinearLayout
@@ -42,12 +47,12 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="10dp">
 
                     <ImageView
                         android:id="@+id/profileview"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:background="@drawable/view_profile"
                         android:clickable="true" />
 
@@ -55,12 +60,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="VIEW PROFILE"
+                        android:text="MY PROFILE"
                         android:textColor="#6f6f6f" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
@@ -74,12 +80,12 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="10dp">
 
                     <ImageView
                         android:id="@+id/transactionadd"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:background="@drawable/add_transaction_1"
                         android:clickable="true" />
 
@@ -93,6 +99,8 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
@@ -110,8 +118,8 @@
 
                     <ImageView
                         android:id="@+id/transactionview"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:background="@drawable/view_transaction_2"
                         android:clickable="true" />
 
@@ -119,12 +127,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="VIEW TRANSACTION"
+                        android:text="MY TRANSACTION"
                         android:textColor="#6f6f6f" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
@@ -142,8 +152,8 @@
 
                     <ImageView
                         android:id="@+id/customeradd"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:background="@drawable/add_new_customer_1"
                         android:clickable="true" />
 
@@ -151,7 +161,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="ADD NEW CUSTOMER"
+                        android:text="ADD CUSTOMER"
                         android:textColor="#6f6f6f" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -173,8 +183,8 @@
                     android:padding="16dp">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:background="@drawable/notification" />
 
                     <TextView
@@ -187,6 +197,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
@@ -204,8 +215,8 @@
 
                     <ImageView
                         android:id="@+id/customersview"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:background="@drawable/view_customers"
                         android:clickable="true" />
 
@@ -213,7 +224,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="VIEW CUSTOMERS"
+                        android:text="MY CUSTOMERS"
                         android:textColor="#6f6f6f" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

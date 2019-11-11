@@ -7,6 +7,9 @@ public class TranTest {
 
     //Constructor
     public TranTest() {
+        this.amount = "";
+        this.debit = "";
+        this.debit = "";
     }
 
     public TranTest(String amount, String debit, String credit) {
