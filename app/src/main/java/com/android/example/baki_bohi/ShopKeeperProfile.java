@@ -1,12 +1,6 @@
 package com.android.example.baki_bohi;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,7 +8,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.example.baki_bohi.models.Shopkeeper;
-import com.android.example.baki_bohi.registration.LogIn;
 import com.android.example.baki_bohi.util.Persistance;
 import com.android.example.baki_bohi.util.UiUtil;
 import com.google.firebase.database.ChildEventListener;
@@ -31,14 +24,13 @@ public class ShopKeeperProfile extends AppCompatActivity {
     TextView address;
     TextView shopname;
     TextView Uid;
-    Button logout;
+
     FirebaseDatabase mDatabase;
     DatabaseReference mRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         UiUtil.showSimpleProgressDialog(ShopKeeperProfile.this, "Please wait...", "Getting your data from server", false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_keeper_profile);
@@ -53,7 +45,7 @@ public class ShopKeeperProfile extends AppCompatActivity {
         address = findViewById(R.id.profile_shop_address);
         shopname = findViewById(R.id.profile_shop_name);
         Uid = findViewById(R.id.userid);
-        logout = findViewById(R.id.logout);
+
 
         Query query = mRef.orderByChild("uid").equalTo(Persistance.uId);
         query.addChildEventListener(new ChildEventListener() {
@@ -97,18 +89,6 @@ public class ShopKeeperProfile extends AppCompatActivity {
         });
 
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences myPrefs = getSharedPreferences("bakiBohiPrefs", MODE_PRIVATE);
-                SharedPreferences.Editor edit = myPrefs.edit();
-                edit.clear();
-                edit.commit();
-                Intent intn = new Intent(getApplicationContext(), LogIn.class);
-                startActivity(intn);
-                finish();
 
-            }
-        });
     }
 }

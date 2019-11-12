@@ -29,6 +29,14 @@ public class TransactionAdarter extends ArrayAdapter<TranTest> {
         TranTest currentTran = getItem(position);
 
         // Find the TextView in the list_item.xml layout with the ID version_name
+        TextView dateTextView = listItemView.findViewById(R.id.dateEdit);
+        dateTextView.setText(currentTran.getAmount());
+
+// Find the TextView in the list_item.xml layout with the ID version_name
+        TextView timeTextView = listItemView.findViewById(R.id.timeEdit);
+        timeTextView.setText(currentTran.getAmount());
+
+// Find the TextView in the list_item.xml layout with the ID version_name
         TextView amountTextView = listItemView.findViewById(R.id.amountEdit);
         amountTextView.setText(currentTran.getAmount());
 

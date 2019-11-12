@@ -38,6 +38,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         TranTest item = transactionList.get(position);
+        holder.date.setText(item.getDate());
+        holder.time.setText(item.getTime());
         holder.totalAmt.setText(item.getAmount());
         holder.debitAmt.setText(item.getDebit());
         holder.creditAmt.setText(item.getCredit());
@@ -56,11 +58,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView creditAmt, debitAmt, totalAmt;
+        TextView date, time, creditAmt, debitAmt, totalAmt;
         LinearLayout transactionItem;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            date = itemView.findViewById(R.id.dateEdit);
+            time = itemView.findViewById(R.id.timeEdit);
             creditAmt = itemView.findViewById(R.id.creditEdit);
             debitAmt = itemView.findViewById(R.id.debitEdit);
             totalAmt = itemView.findViewById(R.id.amountEdit);

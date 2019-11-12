@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="0dp"
             android:layout_marginBottom="50dp"
             android:gravity="center"
             android:orientation="vertical">
@@ -30,12 +30,7 @@
                 android:layout_marginBottom="20dp"
                 android:src="@drawable/icon" />
 
-            <Button
-                android:id="@+id/logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button"
-                android:text="Log Out" />
+
 
         </LinearLayout>
 
@@ -47,7 +42,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="188dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"

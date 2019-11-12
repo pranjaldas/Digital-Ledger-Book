@@ -11,13 +11,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.example.baki_bohi.MainHome;
 import com.android.example.baki_bohi.R;
+import com.android.example.baki_bohi.models.TranTest;
 import com.android.example.baki_bohi.util.UiUtil;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class AddTransaction extends AppCompatActivity {
     private EditText amount;
@@ -44,9 +51,15 @@ public class AddTransaction extends AppCompatActivity {
         // Initialization
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference("Transactions");
-
         addTextListeners();
+        credit.setKeyListener(null);
 
+        //date and Time
+        Calendar calander = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("hh:mm a");
+        final String date = simpleDateFormat.format(calander.getTime());
+        final String time = simpleTimeFormat.format(calander.getTime());
 
         //into database
         add.setOnClickListener(new View.OnClickListener() {
@@ -56,24 +69,30 @@ public class AddTransaction extends AppCompatActivity {
                 String amt = amount.getText().toString().trim();
                 String dbt = debit.getText().toString().trim();
                 String cdt = credit.getText().toString().trim();
-                if (amt.equals("") && cdt.equals("") && dbt.equals("")) {
+                if (debitAmount == 0 && purchaseAmount == 0) {
                     Toast.makeText(getApplicationContext(), "Please fill the values", Toast.LENGTH_SHORT).show();
                     return;
-                } else if (Integer.parseInt(amount.getText().toString().trim()) < Integer.parseInt(debit.getText().toString().trim())) {
-                    debit.setError("Total Purchase could not be Less than paid amount");
-                    debit.setFocusable(true);
-                    return;
+
                 } else {
                     String key = mRef.push().getKey();
-                    mRef.child(key).child("amount").setValue(amt);
-                    mRef.child(key).child("debit").setValue(dbt);
-                    mRef.child(key).child("credit").setValue(cdt);
 
-                    Toast.makeText(AddTransaction.this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
-                    Intent intn = new Intent(AddTransaction.this, MainHome.class);
-                    startActivity(intn);
-                    finish();
-                    UiUtil.removeSimpleProgressDialog();
+                    TranTest transaction = new TranTest(amt, dbt, cdt, date, time);
+                    mRef.child(key).setValue(transaction).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(AddTransaction.this, "Transaction added Successfully", Toast.LENGTH_SHORT).show();
+                                Intent intn = new Intent(AddTransaction.this, MainHome.class);
+                                startActivity(intn);
+                                finish();
+                                UiUtil.removeSimpleProgressDialog();
+                            } else {
+                                Toast.makeText(AddTransaction.this, "Not inserted Transaction", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+
                 }
             }
         });
@@ -83,6 +102,7 @@ public class AddTransaction extends AppCompatActivity {
         amount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
 
             @Override

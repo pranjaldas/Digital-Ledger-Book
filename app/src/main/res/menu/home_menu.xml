@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/log_out"
+        android:icon="@drawable/menu_bar"
+        android:title="Log Out" />
+    <item
+        android:id="@+id/contact_us"
+        android:icon="@drawable/menu_bar"
+        android:title="Contact Us" />
+    <item
+        android:id="@+id/about_app"
+        android:icon="@drawable/menu_bar"
+        android:title="About the App" />
+
+
+</menu>

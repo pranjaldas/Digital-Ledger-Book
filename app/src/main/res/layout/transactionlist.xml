@@ -11,6 +11,24 @@
     android:padding="5dp">
 
     <TextView
+        android:id="@+id/dateEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@android:color/background_dark"
+        tools:text="Date" />
+
+    <TextView
+        android:id="@+id/timeEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@android:color/background_dark"
+        tools:text="Time" />
+
+    <TextView
         android:id="@+id/amountEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
