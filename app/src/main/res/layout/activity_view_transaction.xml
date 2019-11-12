@@ -20,7 +20,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Date"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
 
         <TextView
 
@@ -29,6 +30,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Time"
+            android:textStyle="bold"
             android:textColor="@android:color/background_dark" />
 
 
@@ -39,6 +41,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Total"
+            android:textStyle="bold"
             android:textColor="#0000FF" />
 
         <TextView
@@ -48,6 +51,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Paid "
+            android:textStyle="bold"
             android:textColor="#008000" />
 
         <TextView
@@ -57,6 +61,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Credit"
+            android:textStyle="bold"
             android:textColor="#FF0000" />
 
 

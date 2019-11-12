@@ -16,8 +16,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:textColor="@android:color/background_dark"
-        tools:text="Date" />
+        android:textColor="#3f3f3f"
+        tools:text="Date"
+
+        />
 
     <TextView
         android:id="@+id/timeEdit"
@@ -25,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:textColor="@android:color/background_dark"
+        android:textColor="#3f3f3f"
         tools:text="Time" />
 
     <TextView
