@@ -49,9 +49,8 @@ public class ViewCustomer extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-//              for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Customer ctmr = dataSnapshot.getValue(Customer.class);
-                    customerlist.add(ctmr.getName());
+                Customer ctmr = dataSnapshot.getValue(Customer.class);
+                customerlist.add(ctmr.getName());
                 listView.setAdapter(itemsAdapter);
                 UiUtil.removeSimpleProgressDialog();
             }
@@ -70,39 +69,12 @@ public class ViewCustomer extends AppCompatActivity {
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(getApplicationContext(), "No data", Toast.LENGTH_SHORT).show();
-
             }
-
         });
-
-//        query.addListenerForSingleValueEvent(new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                for(DataSnapshot snapshot:dataSnapshot.getChildren()){
-//                    Customer ctmr=dataSnapshot.getValue(Customer.class);
-//                    customerlist.add(ctmr.getName());
-//                }
-//
-//                ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(ViewCustomer.this, android.R.layout.simple_list_item_1, customerlist);
-//                ListView listView = findViewById(R.id.customer_list);
-//
-//                listView.setAdapter(itemsAdapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Toast.makeText(getApplicationContext(),"View Unsuccessfull",Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
 
     }
 
