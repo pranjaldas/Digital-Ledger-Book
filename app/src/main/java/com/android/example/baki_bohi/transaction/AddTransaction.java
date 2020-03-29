@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class AddTransaction extends AppCompatActivity {
+    //Declaring variables.
     private EditText amount;
     private EditText debit;
     private EditText credit;
@@ -48,13 +49,13 @@ public class AddTransaction extends AppCompatActivity {
         purchaseAmount = 0;
         updateUI();
 
-        // Initialization
+        // Initialization of Database path variables.
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference("Transactions");
         addTextListeners();
         credit.setKeyListener(null);
 
-        //date and Time
+        //date and Time initialization
         Calendar calander = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy");
         SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("hh:mm a");

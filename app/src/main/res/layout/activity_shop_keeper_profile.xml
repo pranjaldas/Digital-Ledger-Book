@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:orientation="vertical"
     android:padding="20dp">
@@ -11,24 +12,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-
+        android:layout_marginTop="15dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginBottom="20dp"
-                android:src="@drawable/icon" />
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:src="@drawable/profile"
+                app:civ_border_color="#3f51b5"
+                app:civ_border_width="4dp"
+                app:civ_shadow="true"
+                app:civ_shadow_color="#3f51b5"
+                app:civ_shadow_radius="10" />
+
 
 
 
@@ -46,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:textColor="@android:color/background_dark"
                 android:text="User ID :"
                 android:textSize="@dimen/activity_horizontal_margin"
                 android:textStyle="bold" />
@@ -70,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:textColor="@android:color/background_dark"
                 android:text="Shop Keeper Name :"
                 android:textSize="@dimen/activity_horizontal_margin"
                 android:textStyle="bold" />
@@ -97,6 +104,7 @@
                 android:layout_weight="1"
                 android:text="Address :"
                 android:textSize="@dimen/activity_horizontal_margin"
+                android:textColor="@android:color/background_dark"
                 android:textStyle="bold" />
 
             <TextView
@@ -121,6 +129,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="Email Address :"
+                android:textColor="@android:color/background_dark"
                 android:textSize="@dimen/activity_horizontal_margin"
                 android:textStyle="bold" />
 
@@ -145,6 +154,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="Phone Number :"
+                android:textColor="@android:color/background_dark"
                 android:textSize="@dimen/activity_horizontal_margin"
                 android:textStyle="bold" />
 
@@ -171,6 +181,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="Shop Name :"
+                android:textColor="@android:color/background_dark"
                 android:textSize="@dimen/activity_horizontal_margin"
                 android:textStyle="bold" />
 

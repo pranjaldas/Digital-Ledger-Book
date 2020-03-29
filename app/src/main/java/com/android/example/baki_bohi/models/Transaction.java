@@ -3,6 +3,7 @@ package com.android.example.baki_bohi.models;
 import java.util.Date;
 
 public class Transaction {
+    //Attributes
     private String customerID;
     private String shopKeeperID;
     private String bilImg;

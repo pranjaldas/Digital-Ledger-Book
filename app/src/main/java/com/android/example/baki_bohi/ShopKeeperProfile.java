@@ -48,45 +48,52 @@ public class ShopKeeperProfile extends AppCompatActivity {
 
 
         Query query = mRef.orderByChild("uid").equalTo(Persistance.uId);
-        query.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+        try {
+            query.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                Shopkeeper sk = dataSnapshot.getValue(Shopkeeper.class);
+                    Shopkeeper sk = dataSnapshot.getValue(Shopkeeper.class);
 
-                name.setText(sk.getName());
-                email.setText(sk.getEmail());
-                phn.setText(sk.getPhone());
-                address.setText(sk.getAddress());
-                shopname.setText(sk.getShopname());
-                Uid.setText(sk.getUid());
-                UiUtil.removeSimpleProgressDialog();
-
-
-            }
+                    name.setText(sk.getName());
+                    email.setText(sk.getEmail());
+                    phn.setText(sk.getPhone());
+                    address.setText(sk.getAddress());
+                    shopname.setText(sk.getShopname());
+                    Uid.setText(sk.getUid());
+                    UiUtil.removeSimpleProgressDialog();
 
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
 
-            }
+                }
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
-            }
+                }
 
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-            }
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+
 
 
 

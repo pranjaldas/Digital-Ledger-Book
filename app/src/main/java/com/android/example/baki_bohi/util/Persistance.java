@@ -4,4 +4,6 @@ public class Persistance {
 
     public static String uId;
     public static String email;
+
 }
+
