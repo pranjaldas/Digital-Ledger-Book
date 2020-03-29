@@ -12,6 +12,9 @@
         android:id="@+id/about_app"
         android:icon="@drawable/menu_bar"
         android:title="About the App" />
-
+    <item
+        android:id="@+id/shopkeeper_profile"
+        android:icon="@drawable/menu_bar"
+        android:title="My Profile" />
 
 </menu>

@@ -110,6 +110,12 @@ public class MainHome extends AppCompatActivity {
             case R.id.contact_us:
                 Toast.makeText(this, "Not Yet code", Toast.LENGTH_SHORT).show();
                 break;
+
+            case R.id.shopkeeper_profile:
+                Intent intnToShop = new Intent(getApplicationContext(), ShopKeeperProfile.class);
+                startActivity(intnToShop);
+                finish();
+                break;
         }
 
         return super.onOptionsItemSelected(item);

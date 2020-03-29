@@ -16,8 +16,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.example.baki_bohi.MainHome;
 import com.android.example.baki_bohi.R;
+import com.android.example.baki_bohi.tabs.HomeScreen;
 import com.android.example.baki_bohi.util.Persistance;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -73,7 +73,7 @@ public class LogIn extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Persistance.uId = mfirebaseAuth.getUid();
                             saveToSharedPreference(emlgn, pw);
-                            Intent intn = new Intent(LogIn.this, MainHome.class);
+                            Intent intn = new Intent(LogIn.this, HomeScreen.class);
                             startActivity(intn);
                             finish();
 

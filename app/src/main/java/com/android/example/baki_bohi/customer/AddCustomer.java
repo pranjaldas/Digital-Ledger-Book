@@ -15,9 +15,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.example.baki_bohi.MainHome;
 import com.android.example.baki_bohi.R;
 import com.android.example.baki_bohi.models.Customer;
+import com.android.example.baki_bohi.tabs.HomeScreen;
 import com.android.example.baki_bohi.util.Persistance;
 import com.android.example.baki_bohi.util.UiUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -79,9 +79,8 @@ public class AddCustomer extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             UiUtil.removeSimpleProgressDialog();
                             Toast.makeText(AddCustomer.this, "Customer Addes Succesfully", Toast.LENGTH_SHORT).show();
-                            Intent intn = new Intent(getApplicationContext(), MainHome.class);
+                            Intent intn = new Intent(getApplicationContext(), HomeScreen.class);
                             startActivity(intn);
-
                             finish();
                         } else {
                             UiUtil.removeSimpleProgressDialog();
@@ -127,6 +126,14 @@ public class AddCustomer extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intn = new Intent(getApplicationContext(), HomeScreen.class);
+        startActivity(intn);
+        finish();
+        super.onBackPressed();
     }
 }
 

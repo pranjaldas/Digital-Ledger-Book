@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.example.baki_bohi.registration.LogIn;
+import com.android.example.baki_bohi.tabs.HomeScreen;
 import com.android.example.baki_bohi.util.Persistance;
 import com.android.example.baki_bohi.util.UiUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -58,7 +59,7 @@ public class SplashScreen extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Persistance.uId = mfirebaseAuth.getUid();
                                 saveToSharedPreference(email, password);
-                                Intent intn = new Intent(getApplicationContext(), MainHome.class);
+                                Intent intn = new Intent(getApplicationContext(), HomeScreen.class);
                                 intn.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intn);
                                 UiUtil.removeSimpleProgressDialog();

@@ -14,9 +14,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.example.baki_bohi.MainHome;
 import com.android.example.baki_bohi.R;
 import com.android.example.baki_bohi.models.TranTest;
+import com.android.example.baki_bohi.tabs.HomeScreen;
 import com.android.example.baki_bohi.util.UiUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -83,7 +83,7 @@ public class AddTransaction extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(AddTransaction.this, "Transaction added Successfully", Toast.LENGTH_SHORT).show();
-                                Intent intn = new Intent(AddTransaction.this, MainHome.class);
+                                Intent intn = new Intent(AddTransaction.this, HomeScreen.class);
                                 startActivity(intn);
                                 finish();
                                 UiUtil.removeSimpleProgressDialog();
@@ -142,6 +142,14 @@ public class AddTransaction extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intn = new Intent(getApplicationContext(), HomeScreen.class);
+        startActivity(intn);
+        finish();
+        super.onBackPressed();
     }
 
     private void updateUI() {

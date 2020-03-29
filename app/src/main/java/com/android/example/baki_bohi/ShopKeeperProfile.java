@@ -1,5 +1,6 @@
 package com.android.example.baki_bohi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -8,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.example.baki_bohi.models.Shopkeeper;
+import com.android.example.baki_bohi.tabs.HomeScreen;
 import com.android.example.baki_bohi.util.Persistance;
 import com.android.example.baki_bohi.util.UiUtil;
 import com.google.firebase.database.ChildEventListener;
@@ -91,11 +93,13 @@ public class ShopKeeperProfile extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
 
-
-
-
-
-
+    @Override
+    public void onBackPressed() {
+        Intent intn = new Intent(getApplicationContext(), HomeScreen.class);
+        startActivity(intn);
+        finish();
+        super.onBackPressed();
     }
 }

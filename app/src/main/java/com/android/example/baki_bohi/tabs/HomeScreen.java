@@ -1,14 +1,24 @@
 package com.android.example.baki_bohi.tabs;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import com.android.example.baki_bohi.R;
+import com.android.example.baki_bohi.ShopKeeperProfile;
+import com.android.example.baki_bohi.customer.AddCustomer;
+import com.android.example.baki_bohi.registration.LogIn;
+import com.android.example.baki_bohi.transaction.AddTransaction;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
@@ -49,10 +59,14 @@ public class HomeScreen extends AppCompatActivity implements TabLayout.BaseOnTab
     private void doOnFabSelected(int position) {
         switch (position) {
             case CUSTOMER_FRAGMENT:
-                Toast.makeText(this, "GOTO add customer", Toast.LENGTH_SHORT).show();
+                Intent intn = new Intent(getApplicationContext(), AddCustomer.class);
+                startActivity(intn);
+                finish();
                 break;
             case TRANSACTION_FRAGMENT:
-                Toast.makeText(this, "Go to add transaction", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), AddTransaction.class);
+                startActivity(intent);
+                finish();
                 break;
             case NOTIFICATION_FRAGMENT:
                 Toast.makeText(this, "notification", Toast.LENGTH_SHORT).show();
@@ -84,5 +98,42 @@ public class HomeScreen extends AppCompatActivity implements TabLayout.BaseOnTab
     /**
      *
      * **/
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
 
+        inflater.inflate(R.menu.home_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.log_out:
+                Toast.makeText(this, "Loging you out", Toast.LENGTH_SHORT).show();
+                SharedPreferences myPrefs = getSharedPreferences("bakiBohiPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor edit = myPrefs.edit();
+                edit.clear();
+                edit.commit();
+                Intent intn = new Intent(getApplicationContext(), LogIn.class);
+                startActivity(intn);
+                finish();
+                break;
+            case R.id.about_app:
+                Toast.makeText(this, "Not Yet Code", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.contact_us:
+                Toast.makeText(this, "Not Yet code", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.shopkeeper_profile:
+                Intent intnToShop = new Intent(getApplicationContext(), ShopKeeperProfile.class);
+                startActivity(intnToShop);
+                finish();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

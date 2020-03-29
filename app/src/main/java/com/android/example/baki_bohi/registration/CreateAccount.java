@@ -14,9 +14,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.example.baki_bohi.MainHome;
 import com.android.example.baki_bohi.R;
 import com.android.example.baki_bohi.models.Shopkeeper;
+import com.android.example.baki_bohi.tabs.HomeScreen;
 import com.android.example.baki_bohi.util.Persistance;
 import com.android.example.baki_bohi.util.UiUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -77,7 +77,7 @@ public class CreateAccount extends AppCompatActivity {
                         UiUtil.removeSimpleProgressDialog();
                         if (task.isSuccessful()) {
                             Toast.makeText(CreateAccount.this, "ShopKeeper Account Created", Toast.LENGTH_SHORT).show();
-                            Intent intn = new Intent(CreateAccount.this, MainHome.class);
+                            Intent intn = new Intent(CreateAccount.this, HomeScreen.class);
                             startActivity(intn);
                             finish();
                         }

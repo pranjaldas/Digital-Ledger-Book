@@ -16,12 +16,9 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".tabs.HomeScreen"
-            android:label="@string/title_activity_home_screen"
+            android:label="বাকী বহী"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".customer.ViewCustomer"
@@ -30,6 +27,10 @@
             android:name=".customer.AddCustomer"
             android:label="@string/category_add_customer" />
         <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ShopKeeperProfile"
