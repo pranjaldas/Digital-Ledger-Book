@@ -16,6 +16,7 @@ public class Transaction {
     private String balance; //locally calculated attribute at the time of transaction.
 
     //Constructors
+
     public Transaction() {
         this.customerID = null;
         this.shopKeeperID = null;

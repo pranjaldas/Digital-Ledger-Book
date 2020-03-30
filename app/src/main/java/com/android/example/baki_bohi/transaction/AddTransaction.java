@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -17,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.example.baki_bohi.R;
 import com.android.example.baki_bohi.models.TranTest;
 import com.android.example.baki_bohi.tabs.HomeScreen;
+import com.android.example.baki_bohi.util.Persistance;
 import com.android.example.baki_bohi.util.UiUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,8 +38,6 @@ public class AddTransaction extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
 
@@ -77,7 +74,7 @@ public class AddTransaction extends AppCompatActivity {
                 } else {
                     String key = mRef.push().getKey();
 
-                    TranTest transaction = new TranTest(amt, dbt, cdt, date, time);
+                    TranTest transaction = new TranTest(amt, dbt, cdt, date, time, Persistance.uId);
                     mRef.child(key).setValue(transaction).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
