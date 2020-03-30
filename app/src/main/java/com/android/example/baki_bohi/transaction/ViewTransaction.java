@@ -1,8 +1,10 @@
 package com.android.example.baki_bohi.transaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,21 +14,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.example.baki_bohi.R;
 import com.android.example.baki_bohi.models.TranTest;
+import com.android.example.baki_bohi.util.Persistance;
 import com.android.example.baki_bohi.util.UiUtil;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 
-public class ViewTransaction extends AppCompatActivity implements ChildEventListener {
+public class ViewTransaction extends AppCompatActivity {
     FirebaseDatabase mDatabase;
     ArrayList<TranTest> tranList;
     RecyclerView recyclerView;
     MyRecyclerViewAdapter adapter;
     private DatabaseReference mRef;
+    private Query query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,38 +54,79 @@ public class ViewTransaction extends AppCompatActivity implements ChildEventList
         //Init Firebase
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference("Transactions");
-        mRef.addChildEventListener(this);
+//        mRef.addChildEventListener(this);
+        //Query to be test
+        query = mRef.orderByChild("sid").equalTo(Persistance.uId);
+        query.addChildEventListener(new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                TranTest item = dataSnapshot.getValue(TranTest.class);
+                tranList.add(item);
+                adapter.notifyDataSetChanged();
+                Log.i("onChildAdded: ", item.toString());
+                UiUtil.removeSimpleProgressDialog();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                TranTest item = dataSnapshot.getValue(TranTest.class);
+                tranList.add(item);
+                adapter.notifyDataSetChanged();
+                UiUtil.removeSimpleProgressDialog();
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                TranTest item = dataSnapshot.getValue(TranTest.class);
+                tranList.add(item);
+                adapter.notifyDataSetChanged();
+                UiUtil.removeSimpleProgressDialog();
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), "No data", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
-
-    @Override
-    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-        TranTest item = dataSnapshot.getValue(TranTest.class);
-        tranList.add(item);
-        adapter.notifyDataSetChanged();
-        UiUtil.removeSimpleProgressDialog();
-    }
-
-    @Override
-    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-    }
-
-    @Override
-    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-        TranTest item = dataSnapshot.getValue(TranTest.class);
-        tranList.remove(item);
-        adapter.notifyDataSetChanged();
-        UiUtil.removeSimpleProgressDialog();
-    }
-
-    @Override
-    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-    }
-
-    @Override
-    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-    }
+//
+//    @Override
+//    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//        TranTest item = dataSnapshot.getValue(TranTest.class);
+//        tranList.add(item);
+//        adapter.notifyDataSetChanged();
+//        UiUtil.removeSimpleProgressDialog();
+//    }
+//
+//    @Override
+//    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//    }
+//
+//    @Override
+//    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//        TranTest item = dataSnapshot.getValue(TranTest.class);
+//        tranList.remove(item);
+//        adapter.notifyDataSetChanged();
+//        UiUtil.removeSimpleProgressDialog();
+//    }
+//
+//    @Override
+//    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//    }
+//
+//    @Override
+//    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//    }
 }
