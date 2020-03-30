@@ -95,6 +95,7 @@ public class HomeScreen extends AppCompatActivity implements TabLayout.BaseOnTab
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
     }
+
     /**
      *
      * **/

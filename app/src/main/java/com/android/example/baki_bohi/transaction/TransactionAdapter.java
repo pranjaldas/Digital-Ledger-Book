@@ -12,8 +12,8 @@ import com.android.example.baki_bohi.models.TranTest;
 
 import java.util.ArrayList;
 
-public class TransactionAdarter extends ArrayAdapter<TranTest> {
-    public TransactionAdarter(Activity context, ArrayList<TranTest> tranList) {
+public class TransactionAdapter extends ArrayAdapter<TranTest> {
+    public TransactionAdapter(Activity context, ArrayList<TranTest> tranList) {
         super(context, 0, tranList);
     }
 
