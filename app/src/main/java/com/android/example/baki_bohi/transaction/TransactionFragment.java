@@ -38,19 +38,14 @@ public class TransactionFragment extends Fragment {
         return transactionFragment;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_view_transactions, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         UiUtil.showSimpleProgressDialog(getActivity(), "Please wait...", "Getting your data from server", false);
-
-        //Init RecyclerView
         tranList = new ArrayList<>();
         recyclerView = getActivity().findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
