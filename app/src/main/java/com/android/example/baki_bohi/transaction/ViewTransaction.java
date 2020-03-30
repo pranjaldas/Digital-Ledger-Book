@@ -50,6 +50,7 @@ public class ViewTransaction extends AppCompatActivity implements ChildEventList
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference("Transactions");
         mRef.addChildEventListener(this);
+        //Query to be test
 
     }
 
