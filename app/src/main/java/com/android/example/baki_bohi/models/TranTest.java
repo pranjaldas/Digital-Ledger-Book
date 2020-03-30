@@ -6,6 +6,7 @@ public class TranTest {
     private String credit;
     private String date;
     private String time;
+    private String sid;
 
     //Constructor
     public TranTest() {
@@ -14,14 +15,24 @@ public class TranTest {
         this.debit = "";
         this.date = "";
         this.time = "";
+        this.sid = "";
     }
 
-    public TranTest(String amount, String debit, String credit, String date, String time) {
+    public TranTest(String amount, String debit, String credit, String date, String time, String sid) {
         this.amount = amount;
         this.debit = debit;
         this.credit = credit;
         this.date = date;
         this.time = time;
+        this.sid = sid;
+    }
+
+    public String getSid() {
+        return sid;
+    }
+
+    public void setSid(String sid) {
+        this.sid = sid;
     }
 
     public String getAmount() {
