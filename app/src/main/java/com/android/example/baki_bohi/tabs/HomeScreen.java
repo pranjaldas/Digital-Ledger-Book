@@ -15,9 +15,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import com.android.example.baki_bohi.R;
-import com.android.example.baki_bohi.ShopKeeperProfile;
 import com.android.example.baki_bohi.customer.AddCustomer;
 import com.android.example.baki_bohi.registration.LogIn;
+import com.android.example.baki_bohi.shopkeeper.ShopKeeperProfile;
 import com.android.example.baki_bohi.transaction.AddTransaction;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;

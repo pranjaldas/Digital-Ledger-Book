@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShopKeeperProfile"
+            android:name=".shopkeeper.ShopKeeperProfile"
             android:label="@string/category_shopkeeper_profile" />
         <activity
             android:name=".MainHome"
