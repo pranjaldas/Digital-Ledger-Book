@@ -1,4 +1,4 @@
-package com.android.example.baki_bohi;
+package com.android.example.baki_bohi.shopkeeper;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.example.baki_bohi.R;
 import com.android.example.baki_bohi.models.Shopkeeper;
 import com.android.example.baki_bohi.tabs.HomeScreen;
 import com.android.example.baki_bohi.util.Persistance;
