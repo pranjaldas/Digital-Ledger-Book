@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.android.example.baki_bohi.R;
 import com.android.example.baki_bohi.customer.AddCustomer;
+import com.android.example.baki_bohi.notes.AddNote;
 import com.android.example.baki_bohi.registration.LogIn;
 import com.android.example.baki_bohi.shopkeeper.ShopKeeperProfile;
 import com.android.example.baki_bohi.transaction.AddTransaction;
@@ -69,7 +70,10 @@ public class HomeScreen extends AppCompatActivity implements TabLayout.BaseOnTab
                 finish();
                 break;
             case NOTIFICATION_FRAGMENT:
-                Toast.makeText(this, "notification", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Add Notes", Toast.LENGTH_SHORT).show();
+                Intent intennt = new Intent(getApplicationContext(), AddNote.class);
+                startActivity(intennt);
+                finish();
                 break;
         }
     }
@@ -77,7 +81,7 @@ public class HomeScreen extends AppCompatActivity implements TabLayout.BaseOnTab
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
         selectedTab = tab.getPosition();
-        setFabVisibility(selectedTab);
+//        setFabVisibility(selectedTab);
     }
 
     private void setFabVisibility(int position) {

@@ -1,7 +1,6 @@
-package com.android.example.baki_bohi.transaction;
+package com.android.example.baki_bohi.notes;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.example.baki_bohi.R;
-import com.android.example.baki_bohi.models.TranTest;
+import com.android.example.baki_bohi.models.Note;
 import com.android.example.baki_bohi.util.Persistance;
 import com.android.example.baki_bohi.util.UiUtil;
 import com.google.firebase.database.ChildEventListener;
@@ -25,52 +24,35 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class TransactionFragment extends Fragment {
+public class NoteFragement extends Fragment {
 
-    private static TransactionFragment transactionFragment;
-    FirebaseDatabase mDatabase;
-    ArrayList<TranTest> tranList;
-    RecyclerView recyclerView;
-    MyRecyclerViewAdapter adapter;
+    private static NoteFragement noteFragemt;
+    private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
-    Query query;
-
-    public static TransactionFragment getInstance() {
-        if (transactionFragment == null) {
-            transactionFragment = new TransactionFragment();
-        }
-        return transactionFragment;
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_transactions, container, false);
-    }
+    private Query query;
+    private List<Note> noteList;
+    private RecyclerView recyclerView;
+    private NoteViewAdapter noteViewAdapter;
     private ChildEventListener childEventListener = new ChildEventListener() {
         @Override
         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            TranTest item = dataSnapshot.getValue(TranTest.class);
-            tranList.add(item);
-            Log.i("onChildAdded: ", tranList.toString());
-            adapter.notifyDataSetChanged();
+            Note note = dataSnapshot.getValue(Note.class);
+            noteList.add(note);
+            noteViewAdapter.notifyDataSetChanged();
             UiUtil.removeSimpleProgressDialog();
         }
 
         @Override
         public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            TranTest item = dataSnapshot.getValue(TranTest.class);
-            tranList.add(item);
-            adapter.notifyDataSetChanged();
-            Log.i("onChildAdded: ", item.toString());
-            UiUtil.removeSimpleProgressDialog();
+            Note note = dataSnapshot.getValue(Note.class);
+            noteList.add(note);
+            noteViewAdapter.notifyDataSetChanged();
         }
 
         @Override
         public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
         }
 
         @Override
@@ -83,26 +65,35 @@ public class TransactionFragment extends Fragment {
         }
     };
 
+    public static NoteFragement getInstance() {
+        if (noteFragemt == null) {
+            noteFragemt = new NoteFragement();
+        }
+        return noteFragemt;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_view_notes, container, false);
+    }
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        UiUtil.showSimpleProgressDialog(getActivity(), "Please wait...", "Getting your data from server", false);
-
-        //Init RecyclerView
-        tranList = new ArrayList<>();
-        recyclerView = getActivity().findViewById(R.id.recycler_view);
+        UiUtil.showSimpleProgressDialog(getActivity(), "Please wait...", "Retrieving your data", true);
+        noteList = new ArrayList<>();
+        recyclerView = getActivity().findViewById(R.id.notes_list_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        layoutManager.setStackFromEnd(false);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new MyRecyclerViewAdapter(tranList, getActivity());
-        recyclerView.setAdapter(adapter);
+        noteViewAdapter = new NoteViewAdapter(noteList, getActivity());
+        recyclerView.setAdapter(noteViewAdapter);
 
-        //Init Firebase
         mDatabase = FirebaseDatabase.getInstance();
-        mRef = mDatabase.getReference("Transactions");
+        mRef = mDatabase.getReference("Notes");
         query = mRef.orderByChild("sid").equalTo(Persistance.uId);
         query.addChildEventListener(childEventListener);
+
     }
 
     @Override

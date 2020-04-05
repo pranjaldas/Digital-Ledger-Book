@@ -75,7 +75,7 @@ public class AddCustomer extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             UiUtil.removeSimpleProgressDialog();
-                            Toast.makeText(AddCustomer.this, "Customer Addes Succesfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddCustomer.this, "Customer Added Successfully", Toast.LENGTH_SHORT).show();
                             Intent intn = new Intent(getApplicationContext(), HomeScreen.class);
                             startActivity(intn);
                             finish();
