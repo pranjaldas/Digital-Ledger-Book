@@ -7,11 +7,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.android.example.baki_bohi.customer.CustomerFragment;
+import com.android.example.baki_bohi.notes.NoteFragement;
 import com.android.example.baki_bohi.transaction.TransactionFragment;
 
 public class TabsAdapter extends FragmentPagerAdapter {
 
-    private static final String[] TAB_TITLES = {"Transactions", "Customers", "Notifications"};
+    private static final String[] TAB_TITLES = {"Transactions", "Customers", "Notes"};
 
     public TabsAdapter(@NonNull FragmentManager fm) {
         super(fm);
@@ -26,7 +27,7 @@ public class TabsAdapter extends FragmentPagerAdapter {
             case 1:
                 return CustomerFragment.getInstance();
             case 2:
-                return NotificationFragemt.getInstance();
+                return NoteFragement.getInstance();
             default:
                 return null;
         }

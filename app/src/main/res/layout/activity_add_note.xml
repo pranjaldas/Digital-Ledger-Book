@@ -4,15 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="20dp"
-
-        tools:context=".transaction.AddTransaction">
-
+        tools:context=".notes.AddNote">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -46,56 +43,49 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:text="Total Purchase(মুঠ ক্রয়) :"
+                android:text="Subject :"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/transaction_total"
+                android:id="@+id/note_subject"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Enter Amount in Rupees."
-                android:inputType="number" />
+                android:hint="Write the subject here."
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:text="Paid in Cash(নগদ টকা):"
+                android:text="Description:"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/transaction_debit"
+                android:id="@+id/note_description"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Enter Amount Rupees"
-                android:inputType="number" />
+                android:hint="Write description here."
+                android:inputType="textMultiLine" />
 
-
-            <TextView
+            <CheckBox
+                android:id="@+id/checkBox"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:text="Credit Amount(বাকী টকা):"
-                android:textSize="20sp"
+                android:layout_height="50dp"
+                android:text="Notify me."
+                android:textColor="#696969"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/transaction_credit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Amount in Rupees."
-                android:inputType="phone" />
-
-
             <Button
-                android:id="@+id/transaction_add"
+                android:id="@+id/note_add"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:background="@drawable/button"
-                android:text="Add Transaction"
+                android:text="Save Note"
                 android:textColor="#ffffff"
                 android:textStyle="bold" />
 
