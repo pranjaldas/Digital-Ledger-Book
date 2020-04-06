@@ -28,6 +28,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
@@ -42,9 +43,10 @@ public class AddTransaction extends AppCompatActivity {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef, customerDBRef;
     private AppCompatAutoCompleteTextView searchCustomerTextbox;
-    private Customer selectedCustomer;
+    private Customer selectedCustomer = null;
     private List<Customer> customerList;
     private SearchAdapter adapter;
+    private Query query;
 
     private float debitAmount, purchaseAmount;
 
@@ -52,6 +54,7 @@ public class AddTransaction extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
+
 
         initViews();
         debitAmount = 0;
@@ -80,14 +83,28 @@ public class AddTransaction extends AppCompatActivity {
                 String amt = amountEditText.getText().toString().trim();
                 String dbt = debitEditText.getText().toString().trim();
                 String cdt = creditEditText.getText().toString().trim();
-                if (debitAmount == 0 && purchaseAmount == 0) {
+                if (selectedCustomer == null) {
+                    Toast.makeText(getApplicationContext(), "Please select a customer", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if (debitAmount == 0 && purchaseAmount == 0) {
                     Toast.makeText(getApplicationContext(), "Please fill the values", Toast.LENGTH_SHORT).show();
                     return;
 
                 } else {
                     String key = mRef.push().getKey();
+                    TranTest transaction = new TranTest();
+                    if (dbt == null) {
+                        transaction.setDebit("00");
+                    }
+                    transaction.setAmount(amt);
+                    transaction.setCredit(cdt);
+                    transaction.setDebit(dbt);
+                    transaction.setSid(Persistance.uId);
+                    transaction.setDate(date);
+                    transaction.setTime(time);
+                    transaction.setCustomer_id(selectedCustomer.getCid());
+                    transaction.setCustomer_name(selectedCustomer.getName());
 
-                    TranTest transaction = new TranTest(amt, dbt, cdt, date, time, Persistance.uId);
                     mRef.child(key).setValue(transaction).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -109,7 +126,8 @@ public class AddTransaction extends AppCompatActivity {
 
     private void fetchCustomerList(){
         customerDBRef = mDatabase.getReference("Customers");
-        customerDBRef.addListenerForSingleValueEvent(customerDBFetchListener);
+        query = customerDBRef.orderByChild("sid").equalTo(Persistance.uId);
+        query.addListenerForSingleValueEvent(customerDBFetchListener);
         adapter = new SearchAdapter(this, R.layout.search_customer_item, customerList);
         searchCustomerTextbox.setAdapter(adapter);
         searchCustomerTextbox.setOnItemClickListener(searchCustomerItemClickListener);
