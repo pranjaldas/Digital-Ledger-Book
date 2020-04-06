@@ -4,35 +4,49 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 
 import com.android.example.baki_bohi.R;
+import com.android.example.baki_bohi.customer.SearchAdapter;
+import com.android.example.baki_bohi.models.Customer;
 import com.android.example.baki_bohi.models.TranTest;
 import com.android.example.baki_bohi.tabs.HomeScreen;
 import com.android.example.baki_bohi.util.Persistance;
 import com.android.example.baki_bohi.util.UiUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class AddTransaction extends AppCompatActivity {
-    //Declaring variables.
-    private EditText amount;
-    private EditText debit;
-    private EditText credit;
-    private Button add;
+    //Declaring variables not war
+    private EditText amountEditText, debitEditText, creditEditText;
+    private Button addButton;
     private FirebaseDatabase mDatabase;
-    private DatabaseReference mRef;
+    private DatabaseReference mRef, customerDBRef;
+    private AppCompatAutoCompleteTextView searchCustomerTextbox;
+    private Customer selectedCustomer = null;
+    private List<Customer> customerList;
+    private SearchAdapter adapter;
+    private Query query;
 
     private float debitAmount, purchaseAmount;
 
@@ -41,16 +55,18 @@ public class AddTransaction extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
 
+
         initViews();
         debitAmount = 0;
         purchaseAmount = 0;
         updateUI();
 
+        fetchCustomerList();
+
         // Initialization of Database path variables.
-        mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference("Transactions");
         addTextListeners();
-        credit.setKeyListener(null);
+        creditEditText.setKeyListener(null);
 
         //date and Time initialization
         Calendar calander = Calendar.getInstance();
@@ -60,21 +76,35 @@ public class AddTransaction extends AppCompatActivity {
         final String time = simpleTimeFormat.format(calander.getTime());
 
         //into database
-        add.setOnClickListener(new View.OnClickListener() {
+        addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UiUtil.showSimpleProgressDialog(getApplicationContext(), "Please wait", "saving your data", false);
-                String amt = amount.getText().toString().trim();
-                String dbt = debit.getText().toString().trim();
-                String cdt = credit.getText().toString().trim();
-                if (debitAmount == 0 && purchaseAmount == 0) {
+                String amt = amountEditText.getText().toString().trim();
+                String dbt = debitEditText.getText().toString().trim();
+                String cdt = creditEditText.getText().toString().trim();
+                if (selectedCustomer == null) {
+                    Toast.makeText(getApplicationContext(), "Please select a customer", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if (debitAmount == 0 && purchaseAmount == 0) {
                     Toast.makeText(getApplicationContext(), "Please fill the values", Toast.LENGTH_SHORT).show();
                     return;
 
                 } else {
                     String key = mRef.push().getKey();
+                    TranTest transaction = new TranTest();
+                    if (dbt == null) {
+                        transaction.setDebit("00");
+                    }
+                    transaction.setAmount(amt);
+                    transaction.setCredit(cdt);
+                    transaction.setDebit(dbt);
+                    transaction.setSid(Persistance.uId);
+                    transaction.setDate(date);
+                    transaction.setTime(time);
+                    transaction.setCustomer_id(selectedCustomer.getCid());
+                    transaction.setCustomer_name(selectedCustomer.getName());
 
-                    TranTest transaction = new TranTest(amt, dbt, cdt, date, time, Persistance.uId);
                     mRef.child(key).setValue(transaction).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -89,23 +119,56 @@ public class AddTransaction extends AppCompatActivity {
                             }
                         }
                     });
-
-
                 }
             }
         });
     }
 
+    private void fetchCustomerList(){
+        customerDBRef = mDatabase.getReference("Customers");
+        query = customerDBRef.orderByChild("sid").equalTo(Persistance.uId);
+        query.addListenerForSingleValueEvent(customerDBFetchListener);
+        adapter = new SearchAdapter(this, R.layout.search_customer_item, customerList);
+        searchCustomerTextbox.setAdapter(adapter);
+        searchCustomerTextbox.setOnItemClickListener(searchCustomerItemClickListener);
+    }
+
+    AdapterView.OnItemClickListener searchCustomerItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            selectedCustomer = (Customer) adapterView.getItemAtPosition(i);
+            Log.d("TAG", "onItemClick: "+ selectedCustomer);
+            searchCustomerTextbox.setText(selectedCustomer.getName());
+        }
+    };
+
+    ValueEventListener customerDBFetchListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            for(DataSnapshot data : dataSnapshot.getChildren()) {
+                Customer item = data.getValue(Customer.class);
+                customerList.add(item);
+            }
+            adapter.notifyDataSetChanged();
+            Log.d("TAG_AddTransaction", "onDataChange: " + customerList.toString());
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+            databaseError.toException().printStackTrace();
+            Toast.makeText(AddTransaction.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    };
+
     private void addTextListeners() {
-        amount.addTextChangedListener(new TextWatcher() {
+        amountEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String str = amount.getText().toString();
+                String str = amountEditText.getText().toString();
                 if (str.equals("")) {
                     purchaseAmount = 0;
                     updateUI();
@@ -119,14 +182,14 @@ public class AddTransaction extends AppCompatActivity {
             }
         });
 
-        debit.addTextChangedListener(new TextWatcher() {
+        debitEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String str = debit.getText().toString();
+                String str = debitEditText.getText().toString();
                 if (str.equals("")) {
                     debitAmount = 0;
                     updateUI();
@@ -150,13 +213,17 @@ public class AddTransaction extends AppCompatActivity {
     }
 
     private void updateUI() {
-        credit.setText(String.valueOf(purchaseAmount - debitAmount));
+        creditEditText.setText(String.valueOf(purchaseAmount - debitAmount));
     }
 
     private void initViews() {
-        amount = findViewById(R.id.transaction_total);
-        debit = findViewById(R.id.transaction_debit);
-        credit = findViewById(R.id.transaction_credit);
-        add = findViewById(R.id.transaction_add);
+        amountEditText = findViewById(R.id.transaction_total);
+        debitEditText = findViewById(R.id.transaction_debit);
+        creditEditText = findViewById(R.id.transaction_credit);
+        addButton = findViewById(R.id.transaction_add);
+        searchCustomerTextbox = findViewById(R.id.add_transaction_search_customer);
+
+        mDatabase = FirebaseDatabase.getInstance();
+        customerList = new ArrayList<>();
     }
 }

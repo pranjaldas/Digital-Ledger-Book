@@ -7,24 +7,38 @@ public class TranTest {
     private String date;
     private String time;
     private String sid;
+    private String customer_name;
+    private String customer_id;
 
     //Constructor
     public TranTest() {
-        this.amount = "";
-        this.debit = "";
-        this.debit = "";
-        this.date = "";
-        this.time = "";
-        this.sid = "";
     }
 
-    public TranTest(String amount, String debit, String credit, String date, String time, String sid) {
+    public TranTest(String amount, String debit, String credit, String date, String time, String sid, String customer_name, String customer_id) {
         this.amount = amount;
         this.debit = debit;
         this.credit = credit;
         this.date = date;
         this.time = time;
         this.sid = sid;
+        this.customer_name = customer_name;
+        this.customer_id = customer_id;
+    }
+
+    public String getCustomer_name() {
+        return customer_name;
+    }
+
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
+    }
+
+    public String getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(String customer_id) {
+        this.customer_id = customer_id;
     }
 
     public String getSid() {
@@ -81,6 +95,11 @@ public class TranTest {
                 "amount='" + amount + '\'' +
                 ", debit='" + debit + '\'' +
                 ", credit='" + credit + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", sid='" + sid + '\'' +
+                ", customer_name='" + customer_name + '\'' +
+                ", customer_id='" + customer_id + '\'' +
                 '}';
     }
 }
