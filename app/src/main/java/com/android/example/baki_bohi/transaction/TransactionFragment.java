@@ -90,7 +90,7 @@ public class TransactionFragment extends Fragment {
 
         //Init RecyclerView
         tranList = new ArrayList<>();
-        recyclerView = getActivity().findViewById(R.id.recycler_view);
+        recyclerView = getActivity().findViewById(R.id.all_transaction_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         layoutManager.setStackFromEnd(false);
