@@ -85,6 +85,8 @@ public class CustomerFragment extends Fragment {
         customerList = new ArrayList<>();
         recyclerView = getActivity().findViewById(R.id.customer_list_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         customerViewAdapter = new CustomerViewAdapter(customerList, getActivity());

@@ -1,6 +1,8 @@
 package com.android.example.baki_bohi.models;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable {
     private String name;
     private String address;
     private String phone;

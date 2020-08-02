@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profile_view"
+    tools:context=".customer.CustomerProfile"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,6 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -26,54 +26,82 @@
                 <com.mikhaellopez.circularimageview.CircularImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/profile"
-                    app:civ_border_color="@color/customerTextColor"
-                    app:civ_border_width="3dp"
+                    android:src="@drawable/iconfinder_9_2694135"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="2dp"
                     app:civ_shadow="true"
                     app:civ_shadow_color="#3f51b5"
-                    app:civ_shadow_radius="10" />
+                    app:civ_shadow_radius="0" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/view_shopkeeper_name"
-                        android:layout_width="match_parent"
+                    >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingStart="10dp"
-                        android:gravity="bottom"
-                        android:padding="5dp"
-                        android:layout_weight="1"
-                        android:textColor="@color/customerTextColor"
-                        android:hint="Tularam Das"
-                        android:textSize="@dimen/activity_horizontal_margin"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="10dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:textColor="@color/customerTextColor"
-                       android:text="'আপোনাৰ সেৱা এ আমাৰ কৰ্তব্য'"
-                        android:textSize="@dimen/activity_horizontal_margin"
-                        />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="4dp"
-                        android:background="@color/customerTextColor" />
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="0dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="82dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/icon1" />
+
+                        <ImageView
+                            android:layout_width="240dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/text" />
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
 
-
             </LinearLayout>
+
+
         </LinearLayout>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp">
+
+            <ImageView
+                android:id="@+id/view_customer_profile_phone"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:src="@drawable/phone"
+                android:text="Address :" />
+
+            <ImageView
+                android:id="@+id/view_customer_profile_message"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:src="@drawable/message"
+                android:text="Address :" />
+
+            <ImageView
+                android:id="@+id/view_customer_profile_whatsapp"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:src="@drawable/whatsapp"
+                android:text="Address :" />
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,6 +109,43 @@
             android:layout_weight="5"
             android:orientation="vertical"
             android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingLeft="0dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="300dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="3"
+                        android:src="@drawable/name"
+                        android:text="Address :" />
+
+                    <TextView
+                        android:id="@+id/view_customer_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:hint="Pranjal Das "
+                        android:inputType="text"
+                        android:textColor="@color/customerTextColor"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,7 +167,7 @@
                         android:text="Address :" />
 
                     <TextView
-                        android:id="@+id/view_shop_user_key"
+                        android:id="@+id/view_customer_key"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -111,44 +176,7 @@
                         android:textSize="16sp"
                         android:hint="anuehcgiownhgioio4 "
                         android:textColor="@color/customerTextColor"
-                       />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:paddingLeft="0dp"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_weight="4">
-
-                    <ImageView
-                        android:layout_width="300dp"
-                        android:layout_height="28dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="3"
-                        android:src="@drawable/iconfinder_thefreeforty_shop_1243706"
-                        android:text="Address :" />
-
-                    <TextView
-                        android:id="@+id/view_shop_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:inputType="text"
-                       android:textColor="@color/customerTextColor"
-                        android:hint="Uttam Shop "
-                        android:textSize="16sp"
-                         />
+                        />
 
                 </LinearLayout>
 
@@ -176,7 +204,7 @@
                         android:text="Address :" />
 
                     <TextView
-                        android:id="@+id/view_shop_address"
+                        android:id="@+id/view_customer_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -211,7 +239,7 @@
                         android:text="Address :" />
 
                     <TextView
-                        android:id="@+id/view_shop_phone"
+                        android:id="@+id/view_customer_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -220,42 +248,7 @@
                         android:textColor="@color/customerTextColor"
                         android:hint="+919678186292 "
                         android:textSize="16sp"
-                         />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:paddingLeft="0dp"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_weight="4">
-                    <ImageView
-                        android:layout_width="300dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="3"
-                        android:text="Address :"
-                        android:src="@drawable/mail2" />
-
-                    <TextView
-                        android:id="@+id/view_shop_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:inputType="text"
-                        android:textColor="@color/customerTextColor"
-                        android:hint="pranjaldas525@gmail.com "
-                        android:textSize="16sp"
-                         />
+                        />
 
                 </LinearLayout>
 
@@ -264,43 +257,25 @@
 
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
+            android:orientation="vertical"
+            tools:context=".notes.AddNote">
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-
-                tools:context=".notes.AddNote">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="0dp"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/icon1" />
-
-                    <ImageView
-                        android:layout_width="250dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/text" />
-
-
-                </LinearLayout>
-            </LinearLayout>
+                android:layout_gravity="top|end"
+                android:layout_margin="@dimen/fab_margin"
+                app:rippleColor="@color/black"
+                app:srcCompat="@android:drawable/ic_menu_manage" />
 
         </LinearLayout>
-
     </LinearLayout>
 
 

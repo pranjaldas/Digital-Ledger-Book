@@ -42,12 +42,12 @@ public class ShopKeeperProfile extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference("Shopkeeper");
 
-        name = findViewById(R.id.profile_name);
-        email = findViewById(R.id.semail);
-        phn = findViewById(R.id.sphone);
-        address = findViewById(R.id.profile_shop_address);
-        shopname = findViewById(R.id.profile_shop_name);
-        Uid = findViewById(R.id.userid);
+        name = findViewById(R.id.view_shopkeeper_name);
+        email = findViewById(R.id.view_shop_email);
+        phn = findViewById(R.id.view_shop_phone);
+        address = findViewById(R.id.view_shop_address);
+        shopname = findViewById(R.id.view_shop_name);
+        Uid = findViewById(R.id.view_shop_user_key);
 
 
         Query query = mRef.orderByChild("uid").equalTo(Persistance.uId);

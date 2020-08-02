@@ -15,14 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".customer.CustomerProfile"></activity>
         <activity
             android:name=".notes.AddNote"
             android:label="Add Note" />
-
         <activity
             android:name=".tabs.HomeScreen"
             android:label="বাকী বহী"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".customer.AddCustomer"
             android:label="@string/category_add_customer" />
