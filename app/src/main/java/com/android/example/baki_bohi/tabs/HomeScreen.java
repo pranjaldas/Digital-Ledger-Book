@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.android.example.baki_bohi.R;
 import com.android.example.baki_bohi.customer.AddCustomer;
+import com.android.example.baki_bohi.customer.CustomerProfile;
 import com.android.example.baki_bohi.notes.AddNote;
 import com.android.example.baki_bohi.registration.LogIn;
 import com.android.example.baki_bohi.shopkeeper.ShopKeeperProfile;

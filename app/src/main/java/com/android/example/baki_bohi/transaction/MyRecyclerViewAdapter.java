@@ -1,6 +1,7 @@
 package com.android.example.baki_bohi.transaction;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.transactionlist, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.all_transaction_list, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
     }
@@ -38,7 +39,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         TranTest item = transactionList.get(position);
+        Log.d("TAG", "onBindViewHolder: " + item);
         holder.date.setText(item.getDate());
+        holder.customer.setText(item.getCustomer_name());
         holder.time.setText(item.getTime());
         holder.totalAmt.setText(item.getAmount());
         holder.debitAmt.setText(item.getDebit());
@@ -58,17 +61,18 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView date, time, creditAmt, debitAmt, totalAmt;
+        TextView customer, time, date, creditAmt, debitAmt, totalAmt;
         LinearLayout transactionItem;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            date = itemView.findViewById(R.id.dateEdit);
-            time = itemView.findViewById(R.id.timeEdit);
-            creditAmt = itemView.findViewById(R.id.creditEdit);
-            debitAmt = itemView.findViewById(R.id.debitEdit);
-            totalAmt = itemView.findViewById(R.id.amountEdit);
-            transactionItem = itemView.findViewById(R.id.transactionList);
+            customer = itemView.findViewById(R.id.view_customer_all_transactions);
+            date = itemView.findViewById(R.id.view_date_all_transactions);
+            time = itemView.findViewById(R.id.view_time_all_transactions);
+            creditAmt = itemView.findViewById(R.id.view_cdt_all_transactions);
+            debitAmt = itemView.findViewById(R.id.view_dbt_all_transactions);
+            totalAmt = itemView.findViewById(R.id.view_amt_all_transactions);
+            transactionItem = itemView.findViewById(R.id.all_transaction_list);
         }
     }
 }

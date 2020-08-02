@@ -11,13 +11,13 @@
     android:padding="5dp">
 
     <TextView
-        android:id="@+id/dateEdit"
+        android:id="@+id/customerEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:textColor="#3f3f3f"
-        tools:text="Date"
+        tools:text="Customer"
 
         />
 

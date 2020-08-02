@@ -12,6 +12,7 @@ public class TranTest {
 
     //Constructor
     public TranTest() {
+        this.debit = "0";
     }
 
     public TranTest(String amount, String debit, String credit, String date, String time, String sid, String customer_name, String customer_id) {

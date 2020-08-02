@@ -84,6 +84,8 @@ public class NoteFragement extends Fragment {
         noteList = new ArrayList<>();
         recyclerView = getActivity().findViewById(R.id.notes_list_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         noteViewAdapter = new NoteViewAdapter(noteList, getActivity());

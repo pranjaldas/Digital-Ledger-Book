@@ -3,6 +3,7 @@ package com.android.example.baki_bohi.customer;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -21,6 +22,7 @@ import com.android.example.baki_bohi.R;
 import com.android.example.baki_bohi.models.Customer;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class CustomerViewAdapter extends RecyclerView.Adapter<CustomerViewAdapter.MyViewHolder> implements PopupMenu.OnMenuItemClickListener {
@@ -49,6 +51,29 @@ public class CustomerViewAdapter extends RecyclerView.Adapter<CustomerViewAdapte
         Log.d("TAG", "onBindViewHolder: " + item);
         holder.name.setText(item.getName());
         holder.address.setText(item.getAddress());
+        holder.callCustomer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "Calling " + item.getName(), Toast.LENGTH_SHORT).show();
+                String phoneNumber = item.getPhone();
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + phoneNumber));
+                if (intent.resolveActivity(mContext.getPackageManager()) != null) {
+                    mContext.startActivity(intent);
+                }
+
+            }
+        });
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intn = new Intent(mContext.getApplicationContext(), AddCustomer.class);
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("Customer_object",item);
+                intn.putExtras(bundle);
+                mContext.startActivity(intn);
+            }
+        });
         holder.layout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -117,7 +142,7 @@ public class CustomerViewAdapter extends RecyclerView.Adapter<CustomerViewAdapte
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, address;
-        CircularImageView imageView;
+        CircularImageView imageView,callCustomer;
         LinearLayout layout;
 
         public MyViewHolder(View itemView) {
@@ -125,6 +150,7 @@ public class CustomerViewAdapter extends RecyclerView.Adapter<CustomerViewAdapte
             name = itemView.findViewById(R.id.customer_item_name);
             address = itemView.findViewById(R.id.customer_item_address);
             imageView = itemView.findViewById(R.id.customer_item_img);
+            callCustomer=itemView.findViewById(R.id.selected_customer_phone);
             layout = itemView.findViewById(R.id.customer_item_layout);
         }
 

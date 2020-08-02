@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class TransactionFragment extends Fragment {
 
@@ -90,11 +91,14 @@ public class TransactionFragment extends Fragment {
 
         //Init RecyclerView
         tranList = new ArrayList<>();
-        recyclerView = getActivity().findViewById(R.id.recycler_view);
+        recyclerView = getActivity().findViewById(R.id.all_transaction_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setReverseLayout(true);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        layoutManager.setStackFromEnd(false);
+        layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
+        //To view newest on the top
+
         adapter = new MyRecyclerViewAdapter(tranList, getActivity());
         recyclerView.setAdapter(adapter);
 

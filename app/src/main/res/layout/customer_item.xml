@@ -28,10 +28,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="235dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_gravity="center"
+            android:layout_weight="1"
             android:orientation="vertical"
             android:paddingStart="15dp">
 
@@ -39,9 +39,9 @@
                 android:id="@+id/customer_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Pranjal Das"
-                android:layout_marginTop="15dp"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
@@ -52,7 +52,20 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="Jalukbari, Guwahati"
                 android:textColor="@color/customerTextColor"
-                android:textSize="10sp" />
+                android:textSize="10sp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="10dp"
+            android:gravity="center_vertical">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/selected_customer_phone"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:src="@drawable/phone" />
 
         </LinearLayout>
 

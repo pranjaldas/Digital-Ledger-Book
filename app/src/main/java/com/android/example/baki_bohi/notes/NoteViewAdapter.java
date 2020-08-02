@@ -46,6 +46,7 @@ public class NoteViewAdapter extends RecyclerView.Adapter<NoteViewAdapter.MyView
         Log.d("TAG", "onBindViewHolder: " + item);
         holder.subject.setText(item.getSubject());
         holder.time.setText(item.getTime());
+        holder.date.setText(item.getDate());
         holder.layout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -103,7 +104,7 @@ public class NoteViewAdapter extends RecyclerView.Adapter<NoteViewAdapter.MyView
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView subject, time;
+        TextView subject, time, date;
 
         LinearLayout layout;
 
@@ -111,6 +112,7 @@ public class NoteViewAdapter extends RecyclerView.Adapter<NoteViewAdapter.MyView
             super(itemView);
             subject = itemView.findViewById(R.id.view_note_subject);
             time = itemView.findViewById(R.id.view_note_time);
+            date = itemView.findViewById(R.id.view_note_date);
             layout = itemView.findViewById(R.id.note_item_layout);
         }
 

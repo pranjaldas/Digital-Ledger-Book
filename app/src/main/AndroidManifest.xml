@@ -15,17 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".customer.CustomerProfile"></activity>
         <activity
             android:name=".notes.AddNote"
             android:label="Add Note" />
-
         <activity
             android:name=".tabs.HomeScreen"
             android:label="বাকী বহী"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".customer.ViewCustomer"
-            android:label="@string/category_view_customer" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".customer.AddCustomer"
             android:label="@string/category_add_customer" />
@@ -40,18 +37,11 @@
             android:name=".shopkeeper.ShopKeeperProfile"
             android:label="@string/category_shopkeeper_profile" />
         <activity
-            android:name=".MainHome"
-            android:label="@string/app_name" />
-        <activity
-            android:name=".transaction.ViewTransaction"
-            android:label="@string/category_transactions" />
-        <activity
             android:name=".transaction.AddTransaction"
             android:label="@string/category_transactions" />
         <activity android:name=".registration.CreateAccount" />
         <activity android:name=".registration.OtpVarify" />
         <activity android:name=".registration.NewRegistration" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".registration.LogIn" />
     </application>
 
