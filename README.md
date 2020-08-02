@@ -3,4 +3,11 @@ Baki Bohi is an android base application to keep the credit sales transction in 
 
 #Hello Guys
 External Consultant Here
-Screen shots
+
+<img src="screenshots/logo.jpg" />
+
+<img src="screenshots/customers.jpg" />
+
+<img src="screenshots/transactions.jpg" />
+
+<img src="screenshots/profile.jpg" />
